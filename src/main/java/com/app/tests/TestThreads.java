@@ -12,5 +12,7 @@ public class TestThreads {
         thread2.start();
         thread3.start();
 
+        thread1.notify();
+
     }
 }
