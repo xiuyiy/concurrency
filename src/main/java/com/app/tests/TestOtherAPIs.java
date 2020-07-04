@@ -9,6 +9,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 
 public class TestOtherAPIs {
     public static void main(String[] args) {
@@ -34,6 +35,12 @@ public class TestOtherAPIs {
             e.printStackTrace();
         }
 
+        service.shutdown();
+        try {
+            System.out.println("service shut down?: "+ service.awaitTermination(30, TimeUnit.SECONDS));
+        } catch (InterruptedException e) {
+            service.shutdownNow();
+        }
 
     }
 }
